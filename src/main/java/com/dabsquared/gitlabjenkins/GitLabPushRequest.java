@@ -51,6 +51,7 @@ public class GitLabPushRequest extends GitLabRequest {
 
     private String before;
     private String after;
+    private String user_email;
     private String checkout_sha;
     private String ref;
     private Integer user_id;
@@ -108,6 +109,16 @@ public class GitLabPushRequest extends GitLabRequest {
 
     public String getRef() {
         return ref;
+    }
+    
+    public String getUser_email()
+    {
+    	return user_email;
+    }
+    
+    public void setUser_email(String user_email)
+    {
+    	this.user_email = user_email;
     }
 
     public void setRef(String ref) {

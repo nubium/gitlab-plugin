@@ -280,6 +280,7 @@ public class GitLabPushTrigger extends Trigger<Job<?, ?>> {
         values.put("gitlabActionType", new StringParameterValue("gitlabActionType", "PUSH"));
         values.put("gitlabUserName", new StringParameterValue("gitlabUserName", req.getCommits().get(0).getAuthor().getName()));
         values.put("gitlabUserEmail", new StringParameterValue("gitlabUserEmail", req.getCommits().get(0).getAuthor().getEmail()));
+        values.put("gitlabOriginalUserEmail", new StringParameterValue("gitlabOriginalUserEmail", req.getUser_email()));
         values.put("gitlabMergeRequestTitle", new StringParameterValue("gitlabMergeRequestTitle", ""));
         values.put("gitlabMergeRequestId", new StringParameterValue("gitlabMergeRequestId", ""));
         values.put("gitlabMergeRequestDescription", new StringParameterValue("gitlabMergeRequestDescription", ""));
