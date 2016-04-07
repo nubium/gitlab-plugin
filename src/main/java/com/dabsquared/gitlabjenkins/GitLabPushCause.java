@@ -33,16 +33,25 @@ public class GitLabPushCause extends SCMTrigger.SCMTriggerCause {
     @Override
     public String getShortDescription() {
         String pushedBy;
-        if (pushRequest.getCommits().size() > 0){
-            pushedBy = pushRequest.getCommits().get(0).getAuthor().getName();
-        } else {
-            pushedBy = pushRequest.getUser_name();
-        }
+        String branch;
+        pushedBy = pushRequest.getUser_name();
+        branch = getSourceBranch(pushRequest);
 
         if (pushedBy == null) {
             return "Started by GitLab push";
         } else {
-            return String.format("Started by GitLab push by %s", pushedBy);
+            return String.format("Started by %s, branch: %s", pushedBy, branch);
         }
+    }
+
+    private String getSourceBranch(GitLabRequest req) {
+        String result = null;
+        if (req instanceof GitLabPushRequest) {
+            result = ((GitLabPushRequest)req).getRef().replaceAll("refs/heads/", "");
+        } else {
+            result = ((GitLabMergeRequest)req).getObjectAttribute().getSourceBranch();
+        }
+
+        return result;
     }
 }
