@@ -45,6 +45,7 @@ class PushHookTriggerHandlerImpl extends AbstractWebHookTriggerHandler<PushHook>
         CauseData.ActionType actionType = hook.getObjectKind().equals("tag_push") ? CauseData.ActionType.TAG_PUSH : CauseData.ActionType.PUSH;
         return causeData()
                 .withActionType(actionType)
+                .withOriginalUserEmail(hook.getUserEmail())
                 .withSourceProjectId(hook.getProjectId())
                 .withTargetProjectId(hook.getProjectId())
                 .withBranch(getTargetBranch(hook))

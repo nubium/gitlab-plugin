@@ -226,8 +226,8 @@ public class GitLabPushTrigger extends Trigger<Job<?, ?>> implements MergeReques
     @Override
     public boolean isTriggerOnApprovedMergeRequest() {
 		return triggerOnApprovedMergeRequest;
-	}    
-    
+	}
+
     @Override
     public boolean isTriggerOnClosedMergeRequest() {
         return triggerOnClosedMergeRequest;
@@ -302,7 +302,7 @@ public class GitLabPushTrigger extends Trigger<Job<?, ?>> implements MergeReques
     public void setTriggerOnPush(boolean triggerOnPush) {
         this.triggerOnPush = triggerOnPush;
     }
-    
+
     @DataBoundSetter
     public void setTriggerOnApprovedMergeRequest(boolean triggerOnApprovedMergeRequest) {
         this.triggerOnApprovedMergeRequest = triggerOnApprovedMergeRequest;
